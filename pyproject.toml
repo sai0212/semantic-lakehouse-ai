@@ -1,0 +1,10 @@
+[project]
+name = "semantic-lakehouse-ai"
+version = "0.1.0"
+description = "Exploring how semantic models improve LLM-powered analytics over an open lakehouse using Apache Iceberg and DuckDB."
+requires-python = ">=3.13,<3.14"
+dependencies = [
+    "faker>=40.39.0",
+    "numpy>=2.5.3",
+    "pandas>=3.0.6",
+]
