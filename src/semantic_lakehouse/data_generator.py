@@ -13,7 +13,14 @@ fake.seed_instance(SEED)
 
 rng = np.random.default_rng(SEED)
 
+def validate_dimensions(customers, products, stores):
+    assert len(customers) == CUSTOMER_COUNT
+    assert len(products) == PRODUCT_COUNT
+    assert len(stores) == STORE_COUNT
 
+    assert customers["customer_id"].is_unique
+    assert products["product_id"].is_unique
+    assert stores["store_id"].is_unique
 
 def generate_customers():
     customers = []
@@ -62,13 +69,16 @@ def generate_dataset():
     customers = generate_customers()
     products = generate_products()
     stores = generate_stores()
-    return stores
-    # return customers, products, stores
+    # return stores
+    return customers, products, stores
 
 if __name__ == "__main__":
-    # customers, products, stores = generate_dataset()
-    stores = generate_dataset()
+    customers, products, stores = generate_dataset()
+    validate_dimensions(customers, products, stores)
+
+    print("Dimension validation passed.")
+    # stores = generate_dataset()
     # print(customers.head())
     # print(products.head())
-    print(stores.head())
+    # print(stores.head())
 
